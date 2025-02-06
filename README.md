@@ -2,3 +2,4 @@
 
 ## My projects
 
+Резюме: https://lendel.gothub.io/cv.html

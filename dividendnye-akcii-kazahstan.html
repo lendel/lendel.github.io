@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Дивидендные акции Казахстанских компаний</title>
-  <!-- Подключаем современный шрифт Roboto с Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -60,10 +59,14 @@
     .highlight {
       font-weight: 500;
     }
+    .table-responsive {
+      overflow-x: auto;
+    }
     table {
       width: 100%;
       border-collapse: collapse;
       margin-top: 15px;
+      min-width: 600px;
     }
     table th, table td {
       padding: 12px 15px;
@@ -120,66 +123,68 @@
 
     <section>
       <h2>Обзор казахстанских компаний с дивидендами</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Компания</th>
-            <th>Дивиденд на акцию</th>
-            <th>Доходность (%)</th>
-            <th>Дата выплаты</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Kaspi.kz</td>
-            <td>1500 KZT</td>
-            <td>4.2%</td>
-            <td>15.06.2024</td>
-          </tr>
-          <tr>
-            <td>KEGOC</td>
-            <td>250 KZT</td>
-            <td>6.8%</td>
-            <td>10.07.2024</td>
-          </tr>
-          <tr>
-            <td>Halyk Bank</td>
-            <td>500 KZT</td>
-            <td>5.3%</td>
-            <td>20.06.2024</td>
-          </tr>
-          <tr>
-            <td>Казатомпром</td>
-            <td>2000 KZT</td>
-            <td>7.5%</td>
-            <td>25.06.2024</td>
-          </tr>
-          <tr>
-            <td>Банк ЦентрКредит</td>
-            <td>350 KZT</td>
-            <td>4.8%</td>
-            <td>18.07.2024</td>
-          </tr>
-          <tr>
-            <td>КазТрансОйл</td>
-            <td>270 KZT</td>
-            <td>6.2%</td>
-            <td>12.07.2024</td>
-          </tr>
-          <tr>
-            <td>НАК КазМунайГаз</td>
-            <td>1800 KZT</td>
-            <td>5.9%</td>
-            <td>30.06.2024</td>
-          </tr>
-          <tr>
-            <td>Air Astana</td>
-            <td>120 KZT</td>
-            <td>3.5%</td>
-            <td>05.07.2024</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>Компания</th>
+              <th>Дивиденд на акцию</th>
+              <th>Доходность (%)</th>
+              <th>Дата выплаты</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Kaspi.kz</td>
+              <td>1500 KZT</td>
+              <td>4.2%</td>
+              <td>15.06.2024</td>
+            </tr>
+            <tr>
+              <td>KEGOC</td>
+              <td>250 KZT</td>
+              <td>6.8%</td>
+              <td>10.07.2024</td>
+            </tr>
+            <tr>
+              <td>Halyk Bank</td>
+              <td>500 KZT</td>
+              <td>5.3%</td>
+              <td>20.06.2024</td>
+            </tr>
+            <tr>
+              <td>Казатомпром</td>
+              <td>2000 KZT</td>
+              <td>7.5%</td>
+              <td>25.06.2024</td>
+            </tr>
+            <tr>
+              <td>Банк ЦентрКредит</td>
+              <td>350 KZT</td>
+              <td>4.8%</td>
+              <td>18.07.2024</td>
+            </tr>
+            <tr>
+              <td>КазТрансОйл</td>
+              <td>270 KZT</td>
+              <td>6.2%</td>
+              <td>12.07.2024</td>
+            </tr>
+            <tr>
+              <td>НАК КазМунайГаз</td>
+              <td>1800 KZT</td>
+              <td>5.9%</td>
+              <td>30.06.2024</td>
+            </tr>
+            <tr>
+              <td>Air Astana</td>
+              <td>120 KZT</td>
+              <td>3.5%</td>
+              <td>05.07.2024</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </section>
 
     <section>

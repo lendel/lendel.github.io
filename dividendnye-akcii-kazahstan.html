@@ -1,118 +1,196 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Дивидендные акции Казахстанских компаний</title>
-    <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; }
-        h1, h2 { color: #333; }
-        p { margin-bottom: 10px; }
-        .section { margin-bottom: 20px; }
-        .highlight { font-weight: bold; }
-        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-        th, td { border: 1px solid #000; padding: 8px; text-align: left; }
-        th { background-color: #f2f2f2; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Дивидендные акции Казахстанских компаний</title>
+  <!-- Подключаем современный шрифт Roboto с Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #4A90E2;
+      --accent-color: #50e3c2;
+      --background-color: #f7f9fc;
+      --text-color: #333;
+      --border-color: #e1e8ed;
+      --shadow-color: rgba(0, 0, 0, 0.1);
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    header {
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+      color: #fff;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 8px var(--shadow-color);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    section {
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px var(--shadow-color);
+    }
+    section h2 {
+      color: var(--primary-color);
+      margin-top: 0;
+    }
+    p {
+      margin-bottom: 15px;
+    }
+    .highlight {
+      font-weight: 500;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    table th, table td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+    }
+    table th {
+      background-color: var(--primary-color);
+      color: #fff;
+      font-weight: 500;
+    }
+    table tbody tr:hover {
+      background-color: #f1faff;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      table th, table td {
+        padding: 10px;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
+    <header>
+      <h1>Дивидендные акции Казахстанских компаний</h1>
+    </header>
 
-    <h1>Дивидендные акции Казахстанских компаний</h1>
+    <section>
+      <p><span class="highlight">Дивидендные акции</span> — это акции компаний, которые выплачивают своим акционерам часть прибыли в виде дивидендов. Такой подход позволяет инвесторам получать стабильный доход, помимо роста стоимости самих акций.</p>
+      <p>Компании, выплачивающие дивиденды, обычно стремятся поддерживать финансовую стабильность и прозрачность, что делает их привлекательными для долгосрочных инвесторов.</p>
+    </section>
 
-    <div class="section">
-        <p><span class="highlight">Дивидендные акции</span> — это акции компаний, которые выплачивают своим акционерам часть прибыли в виде дивидендов. Такой подход позволяет инвесторам получать стабильный доход, помимо роста стоимости самих акций.</p>
-        <p>Компании, выплачивающие дивиденды, обычно стремятся поддерживать финансовую стабильность и прозрачность, что делает их привлекательными для долгосрочных инвесторов.</p>
-    </div>
+    <section>
+      <h2>Преимущества покупки дивидендных акций</h2>
+      <p><span class="highlight">Пассивный доход</span>: Регулярные выплаты обеспечивают стабильный денежный поток, который можно использовать для реинвестирования или личных нужд.</p>
+      <p><span class="highlight">Стабильность и надежность</span>: Даже не все дивидендные аристократы имеют стабильное финансовое положение. Бывает такое, что они в погоне за выплатами дивидендов могут наращивать очень большие долги.</p>
+      <p><span class="highlight">Долгосрочная доходность</span>: Дивиденды в сочетании с ростом стоимости акций могут обеспечить конкурентную общую доходность.</p>
+      <p><span class="highlight">Защита от инфляции</span>: В условиях инфляции дивидендный доход может частично компенсировать снижение покупательной способности.</p>
+    </section>
 
-    <div class="section">
-        <h2>Преимущества покупки дивидендных акций</h2>
-        <p><span class="highlight">Пассивный доход</span>: Регулярные выплаты обеспечивают стабильный денежный поток, который можно использовать для реинвестирования или личных нужд.</p>
-        <p><span class="highlight">Стабильность и надежность</span>: Даже не все дивидендные аристократы имеют стабильное финансовое положение. Бывает такое, что они в погоне за выплатами дивидендов могут наращивать очень большие долги.</p>
-        <p><span class="highlight">Долгосрочная доходность</span>: Дивиденды в сочетании с ростом стоимости акций могут обеспечить конкурентную общую доходность.</p>
-        <p><span class="highlight">Защита от инфляции</span>: В условиях инфляции дивидендный доход может частично компенсировать снижение покупательной способности.</p>
-    </div>
+    <section>
+      <h2>Минусы дивидендных акций</h2>
+      <p><span class="highlight">Ограниченный рост капитала</span>: Компании, активно выплачивающие дивиденды, могут меньше инвестировать в развитие, что ограничивает рост их компании, а следовательно, и рост цен на акции.</p>
+      <p><span class="highlight">Зависимость от экономических условий</span>: В сложные экономические периоды компании могут снизить или вовсе отменить выплаты.</p>
+      <p><span class="highlight">Налогообложение дивидендов</span>: При условии, что сумма превышает 30 000 МРП (117 960 000 тенге в 2025 году). В противном случае налог не взимается.</p>
+      <p><span class="highlight">Риск снижения доходности</span>: Непредсказуемые изменения прибыли компании могут отразиться на размере дивидендов.</p>
+    </section>
 
-    <div class="section">
-        <h2>Минусы дивидендных акций</h2>
-        <p><span class="highlight">Ограниченный рост капитала</span>: Компании, активно выплачивающие дивиденды, могут меньше инвестировать в развитие, что ограничивает рост их компании, а следовательно, и рост цен на акции.</p>
-        <p><span class="highlight">Зависимость от экономических условий</span>: В сложные экономические периоды компании могут снизить или вовсе отменить выплаты.</p>
-        <p><span class="highlight">Налогообложение дивидендов</span>: При условии, что сумма превышает 30 000 МРП (117 960 000 тенге в 2025 году). В противном случае налог не взимается.</p>
-        <p><span class="highlight">Риск снижения доходности</span>: Непредсказуемые изменения прибыли компании могут отразиться на размере дивидендов.</p>
-    </div>
+    <section>
+      <h2>Обзор казахстанских компаний с дивидендами</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Компания</th>
+            <th>Дивиденд на акцию</th>
+            <th>Доходность (%)</th>
+            <th>Дата выплаты</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Kaspi.kz</td>
+            <td>1500 KZT</td>
+            <td>4.2%</td>
+            <td>15.06.2024</td>
+          </tr>
+          <tr>
+            <td>KEGOC</td>
+            <td>250 KZT</td>
+            <td>6.8%</td>
+            <td>10.07.2024</td>
+          </tr>
+          <tr>
+            <td>Halyk Bank</td>
+            <td>500 KZT</td>
+            <td>5.3%</td>
+            <td>20.06.2024</td>
+          </tr>
+          <tr>
+            <td>Казатомпром</td>
+            <td>2000 KZT</td>
+            <td>7.5%</td>
+            <td>25.06.2024</td>
+          </tr>
+          <tr>
+            <td>Банк ЦентрКредит</td>
+            <td>350 KZT</td>
+            <td>4.8%</td>
+            <td>18.07.2024</td>
+          </tr>
+          <tr>
+            <td>КазТрансОйл</td>
+            <td>270 KZT</td>
+            <td>6.2%</td>
+            <td>12.07.2024</td>
+          </tr>
+          <tr>
+            <td>НАК КазМунайГаз</td>
+            <td>1800 KZT</td>
+            <td>5.9%</td>
+            <td>30.06.2024</td>
+          </tr>
+          <tr>
+            <td>Air Astana</td>
+            <td>120 KZT</td>
+            <td>3.5%</td>
+            <td>05.07.2024</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
 
-    <div class="section">
-        <h2>Обзор казахстанских компаний с дивидендами</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Компания</th>
-                    <th>Дивиденд на акцию</th>
-                    <th>Доходность (%)</th>
-                    <th>Дата выплаты</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Kaspi.kz</td>
-                    <td>1500 KZT</td>
-                    <td>4.2%</td>
-                    <td>15.06.2024</td>
-                </tr>
-                <tr>
-                    <td>KEGOC</td>
-                    <td>250 KZT</td>
-                    <td>6.8%</td>
-                    <td>10.07.2024</td>
-                </tr>
-                <tr>
-                    <td>Halyk Bank</td>
-                    <td>500 KZT</td>
-                    <td>5.3%</td>
-                    <td>20.06.2024</td>
-                </tr>
-                <tr>
-                    <td>Казатомпром</td>
-                    <td>2000 KZT</td>
-                    <td>7.5%</td>
-                    <td>25.06.2024</td>
-                </tr>
-                <tr>
-                    <td>Банк ЦентрКредит</td>
-                    <td>350 KZT</td>
-                    <td>4.8%</td>
-                    <td>18.07.2024</td>
-                </tr>
-                <tr>
-                    <td>КазТрансОйл</td>
-                    <td>270 KZT</td>
-                    <td>6.2%</td>
-                    <td>12.07.2024</td>
-                </tr>
-                <tr>
-                    <td>НАК КазМунайГаз</td>
-                    <td>1800 KZT</td>
-                    <td>5.9%</td>
-                    <td>30.06.2024</td>
-                </tr>
-                <tr>
-                    <td>Air Astana</td>
-                    <td>120 KZT</td>
-                    <td>3.5%</td>
-                    <td>05.07.2024</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="section">
-        <h2>Что делать дальше?</h2>
-        <p>В этом модуле вы узнаете:</p>
-        <ul>
-            <li>Как анализировать финансовые отчеты компаний.</li>
-            <li>Как оценивать справедливую стоимость акций.</li>
-            <li>Как определять перспективные компании для инвестиций и избегать рисков.</li>
-        </ul>
-    </div>
-
+    <section>
+      <h2>Что делать дальше?</h2>
+      <p>В этом модуле вы узнаете:</p>
+      <ul>
+        <li>Как анализировать финансовые отчеты компаний.</li>
+        <li>Как оценивать справедливую стоимость акций.</li>
+        <li>Как определять перспективные компании для инвестиций и избегать рисков.</li>
+      </ul>
+    </section>
+  </div>
 </body>
 </html>

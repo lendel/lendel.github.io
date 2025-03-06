@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Анимированный Логотип</title>
-    <link rel="stylesheet" href="style_kpp.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="logo-container">
-        <svg id="logo" viewBox="0 0 300 400">
-            <rect x="0" y="0" width="300" height="400" fill="#FF0000" />
+        <svg id="logo" viewBox="0 0 300 400"> <!-- viewBox задает размеры области просмотра SVG -->
+            <rect x="0" y="0" width="300" height="400" fill="#FF0000" /> <!-- Красный фон -->
 
             <g id="words">
                 <text id="kupi" x="150" y="100" text-anchor="middle" fill="white" class="word">Купи</text>
@@ -18,18 +18,12 @@
                 <text id="pavlodar" x="150" y="250" text-anchor="middle" fill="white" class="word">Павлодар</text>
             </g>
 
-            <g id="first-letters">
-                <text id="first-k" x="150" y="100" text-anchor="middle" fill="white" class="first-letter">К</text>
-                <text id="first-p1" x="150" y="150" text-anchor="middle" fill="white" class="first-letter">П</text>
-                <text id="first-p2" x="150" y="200" text-anchor="middle" fill="white" class="first-letter">П</text>
-            </g>
-
-            <g id="letters" opacity="0"> <!-- Группа для букв "К.П.П." в финале -->
+            <g id="letters" opacity="0"> <!-- Группа для букв "К.П.П.", изначально скрыта -->
                 <text id="letter-k" x="100" y="100" text-anchor="middle" fill="white" class="letter">К</text>
                 <text id="letter-p1" x="150" y="100" text-anchor="middle" fill="white" class="letter">П</text>
                 <text id="letter-p2" x="200" y="100" text-anchor="middle" fill="white" class="letter">П</text>
-                <circle id="dot" cx="150" cy="120" r="2" fill="white" opacity="0"/>
-                <line id="line" x1="150" y1="120" x2="150" y2="120" stroke="white" stroke-width="3" stroke-linecap="round" opacity="0"/>
+                <circle id="dot" cx="150" cy="120" r="2" fill="white" opacity="0"/> <!-- Точка, изначально скрыта -->
+                <line id="line" x1="150" y1="120" x2="150" y2="120" stroke="white" stroke-width="3" stroke-linecap="round" opacity="0"/> <!-- Линия, изначально скрыта и нулевой длины -->
             </g>
 
         </svg>

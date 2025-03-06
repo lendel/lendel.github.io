@@ -1,94 +1,73 @@
 .logo-container {
-    width: 300px;
-    height: 400px;
-    overflow: hidden;
+    width: 300px; /* Или задайте нужную ширину контейнера */
+    height: 400px; /* Или задайте нужную высоту контейнера */
+    overflow: hidden; /* Чтобы анимация не выходила за пределы контейнера */
 }
 
 #logo {
-    display: block;
+    display: block; /* Убрать лишние отступы у SVG */
 }
 
 .word {
-    font-size: 24px;
-    font-family: sans-serif;
-    opacity: 0;
-    transform: translateY(20px);
-    animation-timing-function: ease-out;
-    animation-fill-mode: forwards;
+    font-size: 24px; /* Размер шрифта для слов */
+    font-family: sans-serif; /* Или выберите свой шрифт */
+    opacity: 0; /* Изначально слова невидимы */
+    transform: translateY(20px); /* Начальное положение - немного ниже */
+    animation-timing-function: ease-out; /* Плавное замедление в конце анимации */
+    animation-fill-mode: forwards; /* Чтобы анимация оставалась в конечном состоянии */
 }
 
 #kupi {
-    animation: slideIn 0.8s forwards 0.2s, eraseRestOfLettersKupi 1.0s forwards 2.2s; /* Изменена анимация стирания */
+    animation: slideIn 0.8s forwards 0.2s, eraseLetters 1.2s forwards 2.2s; /* Задержка 0.2с, анимация выезда 0.8с, задержка 2.2с перед стиранием */
 }
 
 #proday {
-    animation: slideIn 0.8s forwards 0.5s, eraseRestOfLettersProday 1.0s forwards 2.5s; /* Изменена анимация стирания */
+    animation: slideIn 0.8s forwards 0.5s, eraseLetters 1.2s forwards 2.5s; /* Задержка 0.5с, анимация выезда 0.8с, задержка 2.5с перед стиранием */
 }
 
 #pomenyay {
-    animation: slideIn 0.8s forwards 0.8s, eraseRestOfLettersPomenyay 1.0s forwards 2.8s; /* Изменена анимация стирания */
+    animation: slideIn 0.8s forwards 0.8s, eraseLetters 1.2s forwards 2.8s; /* Задержка 0.8с, анимация выезда 0.8с, задержка 2.8с перед стиранием */
 }
 
 #pavlodar {
-    animation: slideIn 0.8s forwards 1.1s, risePavlodar 0.8s forwards 4s;
+    animation: slideIn 0.8s forwards 1.1s, risePavlodar 0.8s forwards 4s; /* Задержка 1.1с, анимация выезда 0.8с, задержка 4с перед подъемом */
 }
-
-.first-letter {
-    font-size: 24px; /* Размер первых букв должен совпадать с размером слов */
-    font-family: sans-serif;
-    text-anchor: middle;
-    opacity: 0; /* Изначально первые буквы невидимы */
-    animation-fill-mode: forwards;
-}
-
-#first-k {
-    animation: showFirstLetter 0.1s forwards 2.2s, moveFirstLetterK 0.8s forwards 3.2s ease-out; /* Показать и подвинуть букву "К" */
-}
-
-#first-p1 {
-    animation: showFirstLetter 0.1s forwards 2.5s, moveFirstLetterP1 0.8s forwards 3.4s ease-out; /* Показать и подвинуть первую "П" */
-}
-
-#first-p2 {
-    animation: showFirstLetter 0.1s forwards 2.8s, moveFirstLetterP2 0.8s forwards 3.6s ease-out; /* Показать и подвинуть вторую "П" */
-}
-
 
 .letter {
-    font-size: 48px;
+    font-size: 48px; /* Размер шрифта для букв "К.П.П." */
     font-family: sans-serif;
     text-anchor: middle;
 }
 
 #letters {
-    animation: showLetters 0.1s forwards 3.8s; /* Показываем финальные "К.П.П." чуть позже, чем двигаются первые буквы */
+    animation: showLetters 0.1s forwards 3.5s; /* Показать буквы "К.П.П." после стирания слов */
 }
 
 #letter-k, #letter-p1, #letter-p2 {
-    opacity: 1;
+    opacity: 1; /* Буквы изначально видимы в группе #letters (но группа скрыта до анимации) */
     animation-fill-mode: forwards;
 }
 
 #letter-k {
-    animation: letterMoveK 0.8s forwards 4.6s ease-out; /* Сдвигаем финальные буквы еще позже */
+    animation: letterMoveK 0.8s forwards 4.2s ease-out;
 }
 
 #letter-p1 {
-    animation: letterMoveP1 0.8s forwards 4.8s ease-out;
+    animation: letterMoveP1 0.8s forwards 4.4s ease-out;
 }
 
 #letter-p2 {
-    animation: letterMoveP2 0.8s forwards 5.0s ease-out;
+    animation: letterMoveP2 0.8s forwards 4.6s ease-out;
 }
 
 
 #dot {
-    animation: showDot 0.3s forwards 5.4s ease-in-out;
+    animation: showDot 0.3s forwards 5.0s ease-in-out; /* Появление точки */
 }
 
 #line {
-    transform-origin: center center;
-    animation: expandLine 0.8s forwards 5.7s ease-out;
+    transform-origin: center center; /* Точка начала трансформации для линии - центр */
+    animation: expandLine 0.8s forwards 5.3s ease-out; /* Расширение линии */
 }
 
 
@@ -101,97 +80,56 @@
     }
 }
 
-@keyframes eraseRestOfLettersKupi {
+@keyframes eraseLetters {
     to {
-        opacity: 0; /* Скрываем слово "Купи" целиком */
+        opacity: 0; /* Полностью скрыть слова */
     }
 }
-
-@keyframes eraseRestOfLettersProday {
-    to {
-        opacity: 0; /* Скрываем слово "Продай" целиком */
-    }
-}
-
-@keyframes eraseRestOfLettersPomenyay {
-    to {
-        opacity: 0; /* Скрываем слово "Поменяй" целиком */
-    }
-}
-
-
-@keyframes showFirstLetter {
-    to {
-        opacity: 1; /* Показываем первую букву */
-    }
-}
-
-@keyframes moveFirstLetterK {
-    to {
-        transform: translateX(-50px) translateY(-50px); /* Двигаем "К" влево и вверх */
-        font-size: 48px; /* Увеличиваем размер первой буквы */
-    }
-}
-
-@keyframes moveFirstLetterP1 {
-    to {
-        transform: translateY(-50px); /* Двигаем первую "П" вверх */
-        font-size: 48px;
-    }
-}
-
-@keyframes moveFirstLetterP2 {
-    to {
-        transform: translateX(50px) translateY(-50px); /* Двигаем вторую "П" вправо и вверх */
-        font-size: 48px;
-    }
-}
-
 
 @keyframes showLetters {
     to {
-        opacity: 1;
+        opacity: 1; /* Показать группу букв "К.П.П." */
     }
 }
 
 @keyframes letterMoveK {
     to {
-        transform: translateX(0) translateY(-50px); /* Финальное положение "К" - можно убрать translateY, если нужно ровно по центру */
+        transform: translateX(0) translateY(-50px); /* Сдвинуть букву "К" вверх */
     }
 }
 
 @keyframes letterMoveP1 {
     to {
-        transform: translateX(0) translateY(-50px); /* Финальное положение "П" */
+        transform: translateX(0) translateY(-50px); /* Сдвинуть букву "П" вверх */
     }
 }
 
 @keyframes letterMoveP2 {
     to {
-        transform: translateX(0) translateY(-50px); /* Финальное положение "П" */
+        transform: translateX(0) translateY(-50px); /* Сдвинуть букву "П" вверх */
     }
 }
 
 
 @keyframes risePavlodar {
     to {
-        transform: translateY(-60px);
+        transform: translateY(-60px); /* Поднять "Павлодар" под буквы */
     }
 }
 
 @keyframes showDot {
     to {
-        opacity: 1;
+        opacity: 1; /* Показать точку */
     }
 }
 
 @keyframes expandLine {
     0% {
         opacity: 1;
-        transform: scaleX(0);
+        transform: scaleX(0); /* Начальная ширина линии - 0 */
     }
     100% {
         opacity: 1;
-        transform: scaleX(40);
+        transform: scaleX(40); /* Растянуть линию в 40 раз (настройте значение по необходимости) */
     }
 }

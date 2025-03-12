@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYBR://BLOG_v1.0</title>
+    <style>
+        :root {
+            --main-bg: #000000;
+            --main-text: #00ff00;
+            --header-bg: #111111;
+            --accent: #ff00ff;
+            --secondary: #0099ff;
+            --terminal-bg: #001100;
+            --terminal-border: #00aa00;
+            --glow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+            --crt-lines: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.15),
+                rgba(0, 0, 0, 0.15) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+        }
+
+        @font-face {
+            font-family: 'VT323';
+            src: url('https://cdnjs.cloudflare.com/ajax/libs/fonts/vt323/VT323-Regular.ttf');
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'VT323', monospace;
+            color: var(--main-text);
+        }
+
+        body {
+            background-color: var(--main-bg);
+            background-image: var(--crt-lines);
+            padding: 20px;
+            line-height: 1.5;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            background: radial-gradient(circle at center, transparent 50%, rgba(0, 0, 0, 0.4) 100%);
+            z-index: 100;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        header {
+            background-color: var(--header-bg);
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 2px solid var(--main-text);
+            box-shadow: var(--glow);
+            position: relative;
+        }
+
+        header::before {
+            content: "SYSTEM ONLINE";
+            position: absolute;
+            top: 5px;
+            right: 15px;
+            color: var(--accent);
+            font-size: 14px;
+            animation: blink 1.5s infinite;
+        }
+
+        .header-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .header-controls .dots {
+            display: flex;
+        }
+
+        .header-controls .dot {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            margin-right: 5px;
+            border: 1px solid var(--main-text);
+        }
+
+        .header-controls .dot:nth-child(1) {
+            background-color: #ff0000;
+        }
+
+        .header-controls .dot:nth-child(2) {
+            background-color: #ffff00;
+        }
+
+        .header-controls .dot:nth-child(3) {
+            background-color: #00ff00;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            color: var(--accent);
+            text-shadow: 0 0 5px var(--accent);
+        }
+
+        .logo span {
+            color: var(--secondary);
+            text-shadow: 0 0 5px var(--secondary);
+        }
+
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 10px;
+            background-color: var(--terminal-bg);
+            border: 1px solid var(--terminal-border);
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        nav {
+            margin-bottom: 20px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin-right: 10px;
+            margin-bottom: 5px;
+        }
+
+        nav ul li a {
+            display: block;
+            padding: 8px 15px;
+            text-decoration: none;
+            border: 1px solid var(--main-text);
+            transition: all 0.3s;
+            text-transform: uppercase;
+            font-size: 14px;
+            background-color: var(--terminal-bg);
+        }
+
+        nav ul li a:hover {
+            background-color: var(--main-text);
+            color: var(--main-bg);
+            box-shadow: var(--glow);
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 20px;
+        }
+
+        .posts {
+            display: grid;
+            gap: 20px;
+        }
+
+        .post {
+            border: 2px solid var(--main-text);
+            padding: 15px;
+            background-color: var(--terminal-bg);
+            position: relative;
+        }
+
+        .post::before {
+            content: "> READ.TXT";
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            background-color: var(--main-bg);
+            padding: 0 5px;
+        }
+
+        .post-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+
+        .post-meta {
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: var(--secondary);
+        }
+
+        .post-content {
+            margin-bottom: 15px;
+        }
+
+        .post-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            background-color: var(--header-bg);
+            padding: 3px 8px;
+            font-size: 12px;
+            border: 1px solid var(--secondary);
+        }
+
+        .read-more {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: var(--secondary);
+            color: var(--main-bg);
+            text-decoration: none;
+            margin-top: 10px;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        .read-more:hover {
+            background-color: var(--accent);
+            box-shadow: 0 0 5px var(--accent);
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sidebar-block {
+            border: 1px solid var(--main-text);
+            padding: 15px;
+            background-color: var(--terminal-bg);
+            position: relative;
+        }
+
+        .sidebar-block::before {
+            content: attr(data-title);
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            background-color: var(--main-bg);
+            padding: 0 5px;
+            color: var(--secondary);
+        }
+
+        .search-form {
+            display: flex;
+        }
+
+        .search-form input {
+            flex-grow: 1;
+            padding: 8px;
+            background-color: var(--header-bg);
+            border: 1px solid var(--main-text);
+            outline: none;
+        }
+
+        .search-form button {
+            padding: 8px 12px;
+            background-color: var(--main-text);
+            border: none;
+            color: var(--main-bg);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .search-form button:hover {
+            background-color: var(--accent);
+        }
+
+        .categories ul, .recent-posts ul {
+            list-style: none;
+        }
+
+        .categories ul li, .recent-posts ul li {
+            margin-bottom: 10px;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .categories ul li::before, .recent-posts ul li::before {
+            content: ">";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .categories ul li a, .recent-posts ul li a {
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .categories ul li a:hover, .recent-posts ul li a:hover {
+            color: var(--accent);
+            text-shadow: 0 0 5px var(--accent);
+        }
+
+        .about p {
+            margin-bottom: 10px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .social-links a {
+            display: block;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border: 1px solid var(--main-text);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--main-text);
+            color: var(--main-bg);
+            box-shadow: var(--glow);
+        }
+
+        footer {
+            margin-top: 30px;
+            padding: 15px;
+            border-top: 1px solid var(--main-text);
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .copyright {
+            margin-bottom: 10px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            text-shadow: 0 0 5px var(--accent);
+        }
+
+        .terminal-prompt {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .terminal-prompt span {
+            margin-right: 10px;
+            animation: blink 1s infinite;
+        }
+
+        .terminal-prompt input {
+            background: transparent;
+            border: none;
+            outline: none;
+            flex-grow: 1;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Медиа-запросы для адаптивности */
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+
+            .header-controls {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .header-controls .dots {
+                margin-bottom: 10px;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin-right: 0;
+                margin-bottom: 5px;
+            }
+
+            nav ul li a {
+                text-align: center;
+            }
+        }
+
+        /* Анимации и эффекты */
+        .scan-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background-color: rgba(0, 255, 0, 0.2);
+            pointer-events: none;
+            z-index: 9999;
+            animation: scan 8s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { top: -5px; }
+            100% { top: 100%; }
+        }
+
+        .glitch {
+            position: relative;
+            animation: glitch 3s infinite;
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            2% { transform: translate(-2px, 2px); }
+            4% { transform: translate(2px, -2px); }
+            6% { transform: translate(0); }
+            100% { transform: translate(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="scan-line"></div>
+    <div class="container">
+        <header>
+            <div class="header-controls">
+                <div class="dots">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+                <div class="date-time" id="datetime">DD/MM/YYYY 00:00:00</div>
+            </div>
+            <div class="logo glitch">CYBR://<span>BLOG</span>_v1.0</div>
+            <div class="status-bar">
+                <div class="user">USER: ADMIN</div>
+                <div class="status">STATUS: CONNECTED</div>
+                <div class="memory">MEM: 640K</div>
+            </div>
+        </header>
+        
+        <nav>
+            <ul>
+                <li><a href="#">ГЛАВНАЯ</a></li>
+                <li><a href="#">АРХИВ</a></li>
+                <li><a href="#">ПРОЕКТЫ</a></li>
+                <li><a href="#">ГАЛЕРЕЯ</a></li>
+                <li><a href="#">О_БЛОГЕ</a></li>
+                <li><a href="#">КОНТАКТЫ</a></li>
+            </ul>
+        </nav>
+        
+        <div class="content">
+            <div class="posts">
+                <article class="post">
+                    <h2 class="post-title">Как я взломал корпоративную систему через кофейный автомат</h2>
+                    <div class="post-meta">ОПУБЛИКОВАНО: 12.03.2025 | АВТОР: ADMIN</div>
+                    <div class="post-content">
+                        <p>В этом современном мире Интернета вещей (IoT) кажется, что все подключено к сети. Даже обычный кофейный автомат в офисе может стать точкой входа в корпоративную сеть. В этой статье я расскажу, как обнаружил уязвимость в, казалось бы, безобидном устройстве, и какие последствия это могло иметь для безопасности целой корпорации.</p>
+                        <p>Всё началось с обычного утра в офисе MegaCorp Industries. Я заметил, что наш новый "умный" кофейный автомат запрашивал подключение к локальной сети. Это заставило меня задуматься о протоколах безопасности...</p>
+                    </div>
+                    <div class="post-tags">
+                        <span class="tag">БЕЗОПАСНОСТЬ</span>
+                        <span class="tag">IoT</span>
+                        <span class="tag">ВЗЛОМ</span>
+                        <span class="tag">КОРПОРАЦИИ</span>
+                    </div>
+                    <a href="#" class="read-more">ПРОДОЛЖИТЬ ЧТЕНИЕ</a>
+                </article>
+                
+                <article class="post">
+                    <h2 class="post-title">Нейроимпланты: мой опыт подключения к сети</h2>
+                    <div class="post-meta">ОПУБЛИКОВАНО: 05.03.2025 | АВТОР: ADMIN</div>
+                    <div class="post-content">
+                        <p>Вчера я установил экспериментальный нейроинтерфейс BlackWire v3.0. Вживлённый чип сейчас находится в затылочной части моего черепа и соединён с моим мозгом через специальные нано-проводники. Это должно было стать прорывом в области прямого подключения человека к цифровому миру.</p>
+                        <p>Первые ощущения были странными. Поток информации, который я получаю без использования органов чувств, кажется инородным. Но уже через несколько часов я смог...</p>
+                    </div>
+                    <div class="post-tags">
+                        <span class="tag">НЕЙРОИМПЛАНТЫ</span>
+                        <span class="tag">КИБЕРПАНК</span>
+                        <span class="tag">ТЕХНОЛОГИИ</span>
+                    </div>
+                    <a href="#" class="read-more">ПРОДОЛЖИТЬ ЧТЕНИЕ</a>
+                </article>
+                
+                <article class="post">
+                    <h2 class="post-title">Как выживать в мире постоянной слежки</h2>
+                    <div class="post-meta">ОПУБЛИКОВАНО: 27.02.2025 | АВТОР: ADMIN</div>
+                    <div class="post-content">
+                        <p>Камеры наблюдения с ИИ, дроны-наблюдатели, тотальная цифровая слежка — реальность современного мегаполиса. Но даже в таком мире можно найти лазейки и сохранить частицу свободы. Вот мои советы, как остаться незамеченным в эпоху тотального контроля.</p>
+                        <p>Первое правило: никогда не используйте биометрические данные для идентификации. Ваше лицо, отпечатки пальцев и ДНК — это ключи, которые нельзя сменить при компрометации...</p>
+                    </div>
+                    <div class="post-tags">
+                        <span class="tag">ПРИВАТНОСТЬ</span>
+                        <span class="tag">БЕЗОПАСНОСТЬ</span>
+                        <span class="tag">ТЕХНОЛОГИИ</span>
+                    </div>
+                    <a href="#" class="read-more">ПРОДОЛЖИТЬ ЧТЕНИЕ</a>
+                </article>
+                
+                <div class="terminal-prompt">
+                    <span>></span>
+                    <input type="text" placeholder="Введите команду...">
+                </div>
+            </div>
+            
+            <div class="sidebar">
+                <div class="sidebar-block" data-title="ПОИСК">
+                    <form class="search-form">
+                        <input type="text" placeholder="Поиск по блогу...">
+                        <button type="submit">RUN</button>
+                    </form>
+                </div>
+                
+                <div class="sidebar-block" data-title="КАТЕГОРИИ">
+                    <div class="categories">
+                        <ul>
+                            <li><a href="#">БЕЗОПАСНОСТЬ [23]</a></li>
+                            <li><a href="#">ТЕХНОЛОГИИ [45]</a></li>
+                            <li><a href="#">КИБЕРПАНК [17]</a></li>
+                            <li><a href="#">ВЗЛОМ [8]</a></li>
+                            <li><a href="#">КРИПТОГРАФИЯ [12]</a></li>
+                            <li><a href="#">СЕТЕВЫЕ ПРОТОКОЛЫ [9]</a></li>
+                            <li><a href="#">ИИ [31]</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="sidebar-block" data-title="ПОСЛЕДНИЕ ЗАПИСИ">
+                    <div class="recent-posts">
+                        <ul>
+                            <li><a href="#">Как я взломал корпоративную систему через кофейный автомат</a></li>
+                            <li><a href="#">Нейроимпланты: мой опыт подключения к сети</a></li>
+                            <li><a href="#">Как выживать в мире постоянной слежки</a></li>
+                            <li><a href="#">Обзор новейших имплантов для улучшения зрения</a></li>
+                            <li><a href="#">Проект "Цифровое бессмертие": первые результаты</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="sidebar-block" data-title="ОБО МНЕ">
+                    <div class="about">
+                        <p>Я нетраннер, хакер и специалист по кибербезопасности. Занимаюсь исследованием уязвимостей в системах корпораций и рассказываю о своих находках.</p>
+                        <p>НАВЫКИ: C++, Python, нейрохакинг, криптография, реверсинг.</p>
+                        <div class="social-links">
+                            <a href="#">T</a>
+                            <a href="#">G</a>
+                            <a href="#">D</a>
+                            <a href="#">M</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <div class="copyright">© 2025 CYBR://BLOG_v1.0 | ВСЕ ПРАВА ЗАРЕЗЕРВИРОВАНЫ</div>
+            <div class="footer-links">
+                <a href="#">ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</a>
+                <a href="#">УСЛОВИЯ ИСПОЛЬЗОВАНИЯ</a>
+                <a href="#">КАРТА САЙТА</a>
+            </div>
+            <div class="terminal-prompt">
+                <span>></span>
+                <input type="text" placeholder="Введите команду...">
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Скрипт для отображения текущей даты и времени
+        function updateDateTime() {
+            const now = new Date();
+            const dateTimeStr = now.toLocaleDateString() + ' ' + now.toLocaleTimeString();
+            document.getElementById('datetime').textContent = dateTimeStr;
+        }
+        
+        // Обновляем время каждую секунду
+        setInterval(updateDateTime, 1000);
+        updateDateTime();
+        
+        // Эффект набора текста для плейсхолдеров
+        doc

@@ -612,12 +612,51 @@
         function updateDateTime() {
             const now = new Date();
             const dateTimeStr = now.toLocaleDateString() + ' ' + now.toLocaleTimeString();
-            document.getElementById('datetime').textContent = dateTimeStr;
+            const datetimeElement = document.getElementById('datetime');
+            if (datetimeElement) {
+                datetimeElement.textContent = dateTimeStr;
+            }
         }
         
-        // Обновляем время каждую секунду
-        setInterval(updateDateTime, 1000);
-        updateDateTime();
+        // Запускаем обновление времени после полной загрузки DOM
+        document.addEventListener('DOMContentLoaded', function() {
+            // Обновляем время каждую секунду
+            setInterval(updateDateTime, 1000);
+            updateDateTime();
         
         // Эффект набора текста для плейсхолдеров
-        doc
+        document.querySelectorAll('input[placeholder]').forEach(input => {
+            const originalPlaceholder = input.getAttribute('placeholder');
+            let i = 0;
+            
+            input.setAttribute('placeholder', '');
+            
+            const typeInterval = setInterval(() => {
+                if (i < originalPlaceholder.length) {
+                    input.setAttribute('placeholder', input.getAttribute('placeholder') + originalPlaceholder.charAt(i));
+                    i++;
+                } else {
+                    clearInterval(typeInterval);
+                    setTimeout(() => {
+                        input.setAttribute('placeholder', '');
+                        i = 0;
+                        setTimeout(() => {
+                            const newTypeInterval = setInterval(() => {
+                                if (i < originalPlaceholder.length) {
+                                    input.setAttribute('placeholder', input.getAttribute('placeholder') + originalPlaceholder.charAt(i));
+                                    i++;
+                                } else {
+                                    clearInterval(newTypeInterval);
+                                }
+                            }, 100);
+                        }, 2000);
+                    }, 5000);
+                }
+            }, 100);
+        });
+        
+        // Немедленный запуск обновления времени в любом случае
+        updateDateTime();
+    </script>
+</body>
+</html>

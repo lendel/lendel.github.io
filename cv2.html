@@ -6,25 +6,26 @@
 <title>Лендель Андрей - Резюме</title>
 <style>
 :root {
-  --primary-color: #1a237e;
-  --secondary-color: #6200ea;
-  --accent-color: #bbdefb;
-  --background-color: #f3e5f5;
+  --primary-color: #2c3e50;
+  --secondary-color: #3498db;
+  --accent-color: #e74c3c;
+  --text-color: #333333;
+  --light-color: #ecf0f1;
   --card-background: #ffffff;
+  --shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', 'Roboto', sans-serif;
 }
 
 body {
-  background-color: var(--background-color);
-  color: var(--primary-color);
+  background-color: var(--light-color);
+  color: var(--text-color);
   line-height: 1.6;
-  transition: background-color 0.3s ease;
 }
 
 .container {
@@ -33,146 +34,162 @@ body {
   padding: 2rem;
 }
 
+/* Современная шапка с горизонтальным расположением */
 .header {
-  text-align: center;
+  background-color: var(--card-background);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 2.5rem;
   margin-bottom: 2rem;
-  padding: 2rem;
-  background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  display: flex;
-  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Фоновый элемент дизайна */
+.header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40%;
+  height: 100%;
+  background-color: var(--secondary-color);
+  opacity: 0.05;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 30% 100%);
+  z-index: 0;
+}
+
+.header-content {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2.5rem;
   align-items: center;
+  position: relative;
+  z-index: 1;
 }
 
-.header img {
-  border-radius: 50%;
-  width: 100px;
-  height: 100px;
+.header-avatar {
+  position: relative;
+}
+
+.header-avatar img {
+  width: 150px;
+  height: 150px;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: var(--shadow);
   border: 4px solid var(--card-background);
-  margin-bottom: 1rem; /* Добавьте отступ снизу */
 }
 
-.header h1 {
+/* Акцентный элемент за аватаром */
+.header-avatar::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  background-color: var(--accent-color);
+  opacity: 0.2;
+  z-index: -1;
+}
+
+.header-info h1 {
   font-size: 2.5rem;
-  color: var(--card-background);
+  font-weight: 700;
+  color: var(--primary-color);
   margin-bottom: 0.5rem;
-  animation: fadeIn 1s ease-in-out;
+  line-height: 1.2;
+}
+
+.header-info .position {
+  font-size: 1.2rem;
+  color: var(--secondary-color);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--secondary-color);
 }
 
 .contact-info {
-  color: var(--card-background);
-  margin-bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 1rem;
 }
 
-.section {
-  background-color: var(--card-background);
-  padding: 2rem;
-  margin-bottom: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 0.5s ease-in-out forwards;
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
 }
 
-.section h2 {
+.contact-item i {
   color: var(--secondary-color);
-  margin-bottom: 1.5rem;
-  border-bottom: 2px solid var(--secondary-color);
-  padding-bottom: 0.5rem;
-}
-
-.experience-item {
-  margin-bottom: 1.5rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid #edf2f7;
-}
-
-.experience-item:last-child {
-  border-bottom: none;
-  margin-bottom: 0;
-  padding-bottom: 0;
-}
-
-.company-name {
-  font-weight: bold;
-  color: var(--primary-color);
-  font-size: 1.1rem;
-}
-
-.position {
-  color: var(--secondary-color);
-  font-weight: 500;
-}
-
-.period {
-  color: var(--primary-color);
-  font-size: 0.9rem;
-  margin: 0.5rem 0;
-}
-
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1rem;
-}
-
-.skill-item {
-  background-color: var(--accent-color);
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  text-align: center;
-  color: var(--primary-color);
-  transition: background-color 0.3s ease;
-}
-
-.skill-item:hover {
-  background-color: var(--secondary-color);
-  color: var(--card-background);
-}
-
-.desired-position {
   font-size: 1.2rem;
+}
+
+.header-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.btn {
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-primary {
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background-color: transparent;
   color: var(--secondary-color);
-  margin-bottom: 1rem;
+  border: 1px solid var(--secondary-color);
 }
 
+.btn-outline:hover {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+/* Медиа-запрос для мобильных устройств */
 @media (max-width: 768px) {
-  .container {
-    padding: 1rem;
+  .header-content {
+    grid-template-columns: 1fr;
+    text-align: center;
   }
-
-  .header {
-    padding: 1.5rem;
+  
+  .header-avatar {
+    margin: 0 auto;
   }
-
-  .header h1 {
-    font-size: 2rem;
+  
+  .contact-info {
+    justify-content: center;
   }
-
-  .section {
-    padding: 1.5rem;
-  }
-
-  .skills-grid {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  
+  .header-actions {
+    justify-content: center;
   }
 }
 </style>
@@ -180,14 +197,38 @@ body {
 <body>
 <div class="container">
   <header class="header">
-    <img src="https://www.gravatar.com/avatar/7c4f359b73b6b19e8425b885e9a9a968?s=100&d=identicon" alt="Аватар">
-    <h1>Лендель Андрей Васильевич</h1>
-    <div class="contact-info">
-      <p>📞 +7 (777) 0663940 | ✉️ andrey@lendel.kz</p>
-      <p>📍 Павлодар, Казахстан</p>
-    </div>
-    <div class="desired-position">
-      Программист | Ожидаемая зарплата: 200 000 ₸
+    <div class="header-content">
+      <div class="header-avatar">
+        <img src="https://www.gravatar.com/avatar/7c4f359b73b6b19e8425b885e9a9a968?s=150&d=identicon" alt="Андрей Лендель">
+      </div>
+      <div class="header-info">
+        <h1>Лендель Андрей Васильевич</h1>
+        <div class="position">Программист</div>
+        
+        <div class="contact-info">
+          <div class="contact-item">
+            <i>📞</i>
+            <span>+7 (777) 0663940</span>
+          </div>
+          <div class="contact-item">
+            <i>✉️</i>
+            <span>andrey@lendel.kz</span>
+          </div>
+          <div class="contact-item">
+            <i>📍</i>
+            <span>Павлодар, Казахстан</span>
+          </div>
+          <div class="contact-item">
+            <i>💰</i>
+            <span>Ожидаемая зарплата: 200 000 ₸</span>
+          </div>
+        </div>
+        
+        <div class="header-actions">
+          <a href="#" class="btn btn-primary">Скачать PDF</a>
+          <a href="mailto:andrey@lendel.kz" class="btn btn-outline">Связаться</a>
+        </div>
+      </div>
     </div>
   </header>
 

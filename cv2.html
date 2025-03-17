@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Лендель Андрей - Резюме</title>
+<style>
+:root {
+  --primary-color: #1a237e;
+  --secondary-color: #6200ea;
+  --accent-color: #bbdefb;
+  --background-color: #f3e5f5;
+  --card-background: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--primary-color);
+  line-height: 1.6;
+  transition: background-color 0.3s ease;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.header img {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  border: 4px solid var(--card-background);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  color: var(--card-background);
+  margin-bottom: 0.5rem;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.contact-info {
+  color: var(--card-background);
+  margin-bottom: 1rem;
+}
+
+.section {
+  background-color: var(--card-background);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.5s ease-in-out forwards;
+}
+
+.section h2 {
+  color: var(--secondary-color);
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--secondary-color);
+  padding-bottom: 0.5rem;
+}
+
+.experience-item {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #edf2f7;
+}
+
+.experience-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.company-name {
+  font-weight: bold;
+  color: var(--primary-color);
+  font-size: 1.1rem;
+}
+
+.position {
+  color: var(--secondary-color);
+  font-weight: 500;
+}
+
+.period {
+  color: var(--primary-color);
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.skill-item {
+  background-color: var(--accent-color);
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  text-align: center;
+  color: var(--primary-color);
+  transition: background-color 0.3s ease;
+}
+
+.skill-item:hover {
+  background-color: var(--secondary-color);
+  color: var(--card-background);
+}
+
+.desired-position {
+  font-size: 1.2rem;
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .header {
+    padding: 1.5rem;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .section {
+    padding: 1.5rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <header class="header">
+    <img src="https://www.gravatar.com/avatar/7c4f359b73b6b19e8425b885e9a9a968?s=100&d=identicon" alt="Аватар">
+    <h1>Лендель Андрей Васильевич</h1>
+    <div class="contact-info">
+      <p>📞 +7 (777) 0663940 | ✉️ andrey@lendel.kz</p>
+      <p>📍 Павлодар, Казахстан</p>
+    </div>
+    <div class="desired-position">
+      Программист | Ожидаемая зарплата: 200 000 ₸
+    </div>
+  </header>
+
+  <section class="section">
+    <h2>О себе</h2>
+    <p>Увлекаюсь созданием сайтов. Легко обучаюсь. Не пью и не курю.</p>
+    <p>Готов к переезду и редким командировкам.</p>
+  </section>
+
+  <section class="section">
+    <h2>Опыт работы</h2>
+    <div class="experience-item">
+      <div class="company-name">Детский мир - Казахстан</div>
+      <div class="position">Продавец-кассир</div>
+      <div class="period">Ноябрь 2023 — Февраль 2024 (4 месяца)</div>
+      <ul>
+        <li>Консультирование покупателей</li>
+        <li>Работа на кассе</li>
+      </ul>
+    </div>
+
+    <div class="experience-item">
+      <div class="company-name">ТОО "Торговый Дом \"Вайя-Ка\""</div>
+      <div class="position">Техник</div>
+      <div class="period">Ноябрь 2020 — Июнь 2021 (8 месяцев)</div>
+      <ul>
+        <li>Программирование и ремонт кассового оборудования</li>
+        <li>Настройка на рабочий режим</li>
+      </ul>
+    </div>
+
+    <div class="experience-item">
+      <div class="company-name">ТОО "Алма-ТВ"</div>
+      <div class="position">Специалист по биллингу</div>
+      <ul>
+        <li>Сопровождение биллинговой системы</li>
+        <li>Установка и настройка программного обеспечения</li>
+        <li>Создание, установка, настройка программ для работы с базами данных</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Навыки</h2>
+    <div class="skills-grid">
+      <div class="skill-item">HTML</div>
+      <div class="skill-item">Joomla CMS</div>
+      <div class="skill-item">WordPress</div>
+      <div class="skill-item">Создание сайтов</div>
+      <div class="skill-item">Администрирование сайтов</div>
+      <div class="skill-item">Настройка ПО</div>
+      <div class="skill-item">Telegram bot</div>
+      <div class="skill-item">ChatGPT</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Образование</h2>
+    <div class="company-name">Колледж информационных технологий и бизнеса</div>
+    <div class="position">Информатика, Информационные системы</div>
+    <div class="period">2012</div>
+  </section>
+</div>
+</body>
+</html>

@@ -2,7 +2,9 @@
 ---
 
 @use 'abstracts/variables' with (
-  $theme: '{{ site.theme_mode }}'
+  $theme: '{{ site.theme_mode }}',
+  $font-family-base: ('Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif),
+  $font-family-heading: ('Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif)
 );
 
 /* prettier-ignore */
@@ -13,6 +15,137 @@
 ';
 
 /* append your custom style below */
+
+/* ---------- Color scheme: same palette as cv.html ---------- */
+
+@mixin cv-light {
+  --cv-accent: #4f46e5;
+  --cv-accent-2: #0ea5e9;
+  --cv-accent-soft: #eef0ff;
+
+  --main-bg: #f4f5fb;
+  --main-border-color: #e4e6f0;
+  --text-color: #1e1f2b;
+  --text-muted-color: #62667a;
+  --heading-color: #1e1f2b;
+  --label-color: #62667a;
+  --link-color: #4f46e5;
+  --link-underline-color: #c7c9f5;
+  --blockquote-border-color: #c7c9f5;
+  --blockquote-text-color: #62667a;
+  --btn-border-color: #e4e6f0;
+  --checkbox-checked-color: #4f46e5;
+
+  --sidebar-bg: linear-gradient(160deg, #4f46e5 0%, #6d28d9 50%, #0ea5e9 100%);
+  --sidebar-border-color: transparent;
+  --sidebar-hover-bg: rgb(255 255 255 / 14%);
+  --sidebar-btn-bg: rgb(255 255 255 / 16%);
+  --avatar-border-color: rgb(255 255 255 / 45%);
+
+  --topbar-bg: #f4f5fb;
+  --topbar-text-color: #1e1f2b;
+  --search-border-color: #e4e6f0;
+  --input-focus-border-color: #4f46e5;
+
+  --post-list-text-color: #62667a;
+  --btn-paginator-hover-color: var(--cv-accent-soft);
+
+  --toc-highlight: #4f46e5;
+  --btn-share-hover-color: #4f46e5;
+  --card-bg: #ffffff;
+  --card-hover-bg: var(--cv-accent-soft);
+  --card-shadow: 0 1px 2px rgb(20 20 50 / 4%), 0 8px 24px rgb(20 20 50 / 6%), 0 0 0 1px #e4e6f0;
+  --tag-border: #e4e6f0;
+  --tag-hover: var(--cv-accent-soft);
+  --categories-hover-bg: var(--cv-accent-soft);
+  --categories-icon-hover-color: #4f46e5;
+  --timeline-node-bg: #4f46e5;
+  --inline-code-bg: var(--cv-accent-soft);
+}
+
+@mixin cv-dark {
+  --cv-accent: #818cf8;
+  --cv-accent-2: #38bdf8;
+  --cv-accent-soft: #1f2340;
+
+  --main-bg: #0f1117;
+  --main-border-color: #262a37;
+  --text-color: #d9dbe6;
+  --text-muted-color: #9a9eb3;
+  --heading-color: #e8e9f0;
+  --label-color: #9a9eb3;
+  --link-color: #818cf8;
+  --link-underline-color: #3b3f78;
+  --blockquote-border-color: #3b3f78;
+  --blockquote-text-color: #9a9eb3;
+  --btn-border-color: #262a37;
+  --checkbox-checked-color: #818cf8;
+
+  --sidebar-bg: linear-gradient(160deg, #312e81 0%, #4c1d95 50%, #0c4a6e 100%);
+  --sidebar-border-color: transparent;
+  --sidebar-hover-bg: rgb(255 255 255 / 10%);
+  --sidebar-btn-bg: rgb(255 255 255 / 12%);
+  --avatar-border-color: rgb(255 255 255 / 35%);
+
+  --topbar-bg: #0f1117;
+  --topbar-text-color: #e8e9f0;
+  --search-border-color: #262a37;
+  --input-focus-border-color: #818cf8;
+
+  --post-list-text-color: #9a9eb3;
+  --btn-paginator-hover-color: var(--cv-accent-soft);
+
+  --toc-highlight: #818cf8;
+  --btn-share-hover-color: #818cf8;
+  --card-bg: #171a23;
+  --card-hover-bg: var(--cv-accent-soft);
+  --card-shadow: 0 1px 2px rgb(0 0 0 / 30%), 0 8px 24px rgb(0 0 0 / 25%), 0 0 0 1px #262a37;
+  --tag-hover: var(--cv-accent-soft);
+  --categories-hover-bg: var(--cv-accent-soft);
+  --categories-icon-hover-color: #818cf8;
+  --timeline-node-bg: #818cf8;
+  --inline-code-bg: var(--cv-accent-soft);
+}
+
+:root[data-bs-theme='light'] {
+  @include cv-light;
+}
+
+:root[data-bs-theme='dark'] {
+  @include cv-dark;
+}
+
+:root:not([data-bs-theme]) {
+  @media (prefers-color-scheme: light) {
+    @include cv-light;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    @include cv-dark;
+  }
+}
+
+/* Sidebar: white text on the gradient, as in the CV header */
+#sidebar {
+  --site-title-color: #ffffff;
+  --site-subtitle-color: rgb(255 255 255 / 80%);
+  --sidebar-muted-color: rgb(255 255 255 / 78%);
+  --sidebar-active-color: #ffffff;
+  --sidebar-btn-color: #ffffff;
+
+  color: #ffffff;
+}
+
+/* Post cards on the home page: rounded like the CV cards */
+#post-list .card-wrapper .card {
+  border-radius: 18px;
+}
+
+/* Tags as soft chips, like the CV skills */
+.post-tag {
+  background: var(--cv-accent-soft);
+  border-color: transparent;
+}
 
 /* Mobile/tablet: keep the top bar pinned while the page scrolls */
 @media (max-width: 991.98px) {
@@ -46,4 +179,11 @@
     display: block;
     color: var(--topbar-text-color);
   }
+}
+
+/* Bold headings, as in the CV */
+h1, h2, h3, h4, h5,
+.post-title {
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }

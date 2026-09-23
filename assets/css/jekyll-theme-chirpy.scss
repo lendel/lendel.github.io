@@ -1,0 +1,37 @@
+---
+---
+
+@use 'abstracts/variables' with (
+  $theme: '{{ site.theme_mode }}'
+);
+
+/* prettier-ignore */
+@use 'main
+{%- if jekyll.environment == 'production' -%}
+  .bundle
+{%- endif -%}
+';
+
+/* append your custom style below */
+
+/* Mobile/tablet: keep the top bar pinned while the page scrolls */
+@media (max-width: 991.98px) {
+  #topbar-wrapper {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--main-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--main-border-color);
+  }
+
+  /* the post TOC bar sticks right below the pinned top bar */
+  #toc-bar {
+    top: 3rem;
+  }
+
+  #toc-bar.invisible {
+    top: 0;
+  }
+}

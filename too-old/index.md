@@ -1,7 +1,7 @@
 ---
+layout: page
 title: Старое
-icon: fas fa-box-archive
-order: 5
+permalink: /too-old/
 ---
 
 Страницы, которые были на сайте до появления блога. Они сохранены как есть.

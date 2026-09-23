@@ -194,6 +194,10 @@ defaults:
     values:
       comments: false
   - scope:
+      path: too-old # old pages: hidden from the menu, sitemap and search engines
+    values:
+      sitemap: false
+  - scope:
       path: ""
       type: tabs # see `site.collections`
     values:

@@ -16,135 +16,316 @@
 
 /* append your custom style below */
 
-/* ---------- Color scheme: same palette as cv.html ---------- */
+/* =====================================================================
+   Design tokens — "Indigo Aurora", shared with cv.html
+   Cool, slightly indigo-tinted neutrals + one brand gradient.
+   ===================================================================== */
 
-@mixin cv-light {
-  --cv-accent: #4f46e5;
-  --cv-accent-2: #0ea5e9;
-  --cv-accent-soft: #eef0ff;
+@mixin tokens-light {
+  color-scheme: light;
 
-  --main-bg: #f4f5fb;
-  --main-border-color: #e4e6f0;
-  --text-color: #1e1f2b;
-  --text-muted-color: #62667a;
-  --heading-color: #1e1f2b;
-  --label-color: #62667a;
-  --link-color: #4f46e5;
-  --link-underline-color: #c7c9f5;
-  --blockquote-border-color: #c7c9f5;
-  --blockquote-text-color: #62667a;
-  --btn-border-color: #e4e6f0;
-  --checkbox-checked-color: #4f46e5;
+  --bg: #f5f6fb;
+  --surface: #ffffff;
+  --surface-2: #f0f2f9;
+  --border: #e5e7f0;
+  --border-strong: #d4d8e6;
+  --text: #151823;
+  --text-2: #3d4254;
+  --muted: #6b7086;
 
-  --sidebar-bg: linear-gradient(160deg, #4f46e5 0%, #6d28d9 50%, #0ea5e9 100%);
-  --sidebar-border-color: transparent;
-  --sidebar-hover-bg: rgb(255 255 255 / 14%);
-  --sidebar-btn-bg: rgb(255 255 255 / 16%);
-  --avatar-border-color: rgb(255 255 255 / 45%);
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --primary-soft: #eef0ff;
+  --primary-soft-2: #e0e3ff;
+  --on-primary: #ffffff;
 
-  --topbar-bg: #f4f5fb;
-  --topbar-text-color: #1e1f2b;
-  --search-border-color: #e4e6f0;
-  --input-focus-border-color: #4f46e5;
+  --brand-gradient: linear-gradient(135deg, #4f46e5 0%, #7c3aed 55%, #0ea5e9 100%);
+  --sidebar-gradient: linear-gradient(165deg, #4f46e5 0%, #6d28d9 48%, #0ea5e9 100%);
 
-  --post-list-text-color: #62667a;
-  --btn-paginator-hover-color: var(--cv-accent-soft);
+  --ok: #059669;
+  --info: #0284c7;
+  --warn: #d97706;
+  --danger: #dc2626;
 
-  --toc-highlight: #4f46e5;
-  --btn-share-hover-color: #4f46e5;
-  --card-bg: #ffffff;
-  --card-hover-bg: var(--cv-accent-soft);
-  --card-shadow: 0 1px 2px rgb(20 20 50 / 4%), 0 8px 24px rgb(20 20 50 / 6%), 0 0 0 1px #e4e6f0;
-  --tag-border: #e4e6f0;
-  --tag-hover: var(--cv-accent-soft);
-  --categories-hover-bg: var(--cv-accent-soft);
-  --categories-icon-hover-color: #4f46e5;
-  --timeline-node-bg: #4f46e5;
-  --inline-code-bg: var(--cv-accent-soft);
+  --shadow-sm: 0 1px 2px rgb(20 22 50 / 5%);
+  --shadow-md: 0 1px 2px rgb(20 22 50 / 4%), 0 8px 24px rgb(20 22 50 / 7%);
+  --shadow-lg: 0 2px 4px rgb(20 22 50 / 5%), 0 16px 40px rgb(79 70 229 / 14%);
 }
 
-@mixin cv-dark {
-  --cv-accent: #818cf8;
-  --cv-accent-2: #38bdf8;
-  --cv-accent-soft: #1f2340;
+@mixin tokens-dark {
+  color-scheme: dark;
 
-  --main-bg: #0f1117;
-  --main-border-color: #262a37;
-  --text-color: #d9dbe6;
-  --text-muted-color: #9a9eb3;
-  --heading-color: #e8e9f0;
-  --label-color: #9a9eb3;
-  --link-color: #818cf8;
-  --link-underline-color: #3b3f78;
-  --blockquote-border-color: #3b3f78;
-  --blockquote-text-color: #9a9eb3;
-  --btn-border-color: #262a37;
-  --checkbox-checked-color: #818cf8;
+  --bg: #0b0d14;
+  --surface: #121521;
+  --surface-2: #181c2b;
+  --border: #232839;
+  --border-strong: #30364b;
+  --text: #e7e9f2;
+  --text-2: #b9bdd0;
+  --muted: #8a8fa8;
 
-  --sidebar-bg: linear-gradient(160deg, #312e81 0%, #4c1d95 50%, #0c4a6e 100%);
+  --primary: #8b93ff;
+  --primary-hover: #a5acff;
+  --primary-soft: rgb(139 147 255 / 12%);
+  --primary-soft-2: rgb(139 147 255 / 22%);
+  --on-primary: #0b0d14;
+
+  --brand-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 55%, #38bdf8 100%);
+  --sidebar-gradient: linear-gradient(165deg, #312e81 0%, #4c1d95 48%, #075985 100%);
+
+  --ok: #34d399;
+  --info: #38bdf8;
+  --warn: #fbbf24;
+  --danger: #f87171;
+
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 30%);
+  --shadow-md: 0 1px 2px rgb(0 0 0 / 35%), 0 8px 24px rgb(0 0 0 / 30%);
+  --shadow-lg: 0 2px 4px rgb(0 0 0 / 35%), 0 16px 40px rgb(99 102 241 / 18%);
+}
+
+/* Map the tokens onto the variables Chirpy (and Bootstrap) read */
+@mixin chirpy-vars {
+  --main-bg: var(--bg);
+  --mask-bg: rgb(15 17 30 / 55%);
+  --main-border-color: var(--border);
+
+  --text-color: var(--text-2);
+  --text-muted-color: var(--muted);
+  --text-muted-highlight-color: var(--text-2);
+  --heading-color: var(--text);
+  --label-color: var(--muted);
+  --blockquote-border-color: var(--primary);
+  --blockquote-text-color: var(--text-2);
+  --link-color: var(--primary);
+  --link-underline-color: var(--primary-soft-2);
+  --button-bg: var(--surface);
+  --btn-border-color: var(--border);
+  --btn-backtotop-color: var(--on-primary);
+  --btn-backtotop-border-color: transparent;
+  --checkbox-color: var(--border-strong);
+  --checkbox-checked-color: var(--primary);
+  --img-bg: var(--surface-2);
+
+  --menu-bg: var(--surface);
+  --menu-border-color: var(--border);
+  --menu-shadow-color: rgb(20 22 50 / 18%);
+  --menu-active-color: var(--primary);
+  --menu-highlight-bg: var(--primary-soft);
+
+  --sidebar-bg: var(--sidebar-gradient);
   --sidebar-border-color: transparent;
-  --sidebar-hover-bg: rgb(255 255 255 / 10%);
-  --sidebar-btn-bg: rgb(255 255 255 / 12%);
-  --avatar-border-color: rgb(255 255 255 / 35%);
+  --sidebar-hover-bg: rgb(255 255 255 / 14%);
+  --sidebar-btn-bg: rgb(255 255 255 / 14%);
+  --avatar-border-color: rgb(255 255 255 / 45%);
 
-  --topbar-bg: #0f1117;
-  --topbar-text-color: #e8e9f0;
-  --search-border-color: #262a37;
-  --input-focus-border-color: #818cf8;
+  --topbar-bg: var(--bg);
+  --topbar-text-color: var(--text);
+  --search-border-color: var(--border);
+  --search-icon-color: var(--muted);
+  --input-focus-border-color: var(--primary);
 
-  --post-list-text-color: #9a9eb3;
-  --btn-paginator-hover-color: var(--cv-accent-soft);
+  --post-list-text-color: var(--muted);
+  --btn-patinator-text-color: var(--text-2);
+  --btn-paginator-hover-color: var(--primary-soft);
 
-  --toc-highlight: #818cf8;
-  --btn-share-hover-color: #818cf8;
-  --card-bg: #171a23;
-  --card-hover-bg: var(--cv-accent-soft);
-  --card-shadow: 0 1px 2px rgb(0 0 0 / 30%), 0 8px 24px rgb(0 0 0 / 25%), 0 0 0 1px #262a37;
-  --tag-hover: var(--cv-accent-soft);
-  --categories-hover-bg: var(--cv-accent-soft);
-  --categories-icon-hover-color: #818cf8;
-  --timeline-node-bg: #818cf8;
-  --inline-code-bg: var(--cv-accent-soft);
+  --toc-highlight: var(--primary);
+  --toc-popup-border-color: var(--border);
+  --btn-share-color: var(--muted);
+  --btn-share-hover-color: var(--primary);
+  --card-bg: var(--surface);
+  --card-header-bg: var(--surface);
+  --card-hover-bg: var(--primary-soft);
+  --card-shadow: var(--shadow-md);
+  --footnote-target-bg: var(--primary-soft-2);
+  --tb-odd-bg: var(--surface);
+  --tb-even-bg: var(--surface-2);
+  --tb-border-color: var(--border);
+  --dash-color: var(--border-strong);
+  --kbd-wrap-color: var(--border-strong);
+  --kbd-text-color: var(--text);
+  --kbd-bg-color: var(--surface);
+
+  --prompt-text-color: var(--text-2);
+  --prompt-tip-bg: color-mix(in srgb, var(--ok) 10%, var(--surface));
+  --prompt-tip-icon-color: var(--ok);
+  --prompt-info-bg: color-mix(in srgb, var(--info) 10%, var(--surface));
+  --prompt-info-icon-color: var(--info);
+  --prompt-warning-bg: color-mix(in srgb, var(--warn) 12%, var(--surface));
+  --prompt-warning-icon-color: var(--warn);
+  --prompt-danger-bg: color-mix(in srgb, var(--danger) 10%, var(--surface));
+  --prompt-danger-icon-color: var(--danger);
+
+  --tag-border: transparent;
+  --tag-shadow: transparent;
+  --tag-hover: var(--primary-soft-2);
+  --search-tag-bg: var(--primary-soft);
+
+  --categories-border: var(--border);
+  --categories-hover-bg: var(--primary-soft);
+  --categories-icon-hover-color: var(--primary);
+
+  --timeline-color: var(--border-strong);
+  --timeline-node-bg: var(--primary);
+  --timeline-year-dot-color: var(--surface);
+
+  --language-border-color: var(--border);
+  --highlight-bg-color: var(--surface-2);
+  --highlighter-rouge-color: var(--primary);
+  --highlight-lineno-color: var(--muted);
+  --inline-code-bg: var(--primary-soft);
+  --code-header-text-color: var(--muted);
+  --code-header-muted-color: var(--border-strong);
+  --code-header-icon-color: var(--muted);
+
+  --bs-primary: var(--primary);
+  --bs-link-color: var(--primary);
+  --bs-body-bg: var(--bg);
+  --bs-border-color: var(--border);
 }
 
 :root[data-bs-theme='light'] {
-  @include cv-light;
+  @include tokens-light;
+  @include chirpy-vars;
 }
 
 :root[data-bs-theme='dark'] {
-  @include cv-dark;
+  @include tokens-dark;
+  @include chirpy-vars;
 }
 
 :root:not([data-bs-theme]) {
   @media (prefers-color-scheme: light) {
-    @include cv-light;
+    @include tokens-light;
+    @include chirpy-vars;
   }
 
   @media (prefers-color-scheme: dark) {
-    @include cv-dark;
+    @include tokens-dark;
+    @include chirpy-vars;
   }
 }
 
-/* Sidebar: white text on the gradient, as in the CV header */
+/* =====================================================================
+   Base
+   ===================================================================== */
+
+::selection {
+  background: var(--primary-soft-2);
+  color: var(--text);
+}
+
+h1, h2, h3, h4, h5,
+.post-title {
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+h1 {
+  letter-spacing: -0.025em;
+}
+
+/* Links inside articles: indigo with a soft underline that fills on hover */
+.content a:not(.img-link):not(.popup):not(.anchor) {
+  border-bottom: 1px solid var(--primary-soft-2);
+  transition: border-color 0.15s, color 0.15s;
+
+  &:hover {
+    color: var(--primary-hover);
+    border-bottom-color: currentcolor;
+  }
+}
+
+/* =====================================================================
+   Sidebar — the brand gradient with a soft glow, like the CV header
+   ===================================================================== */
+
 #sidebar {
   --site-title-color: #ffffff;
-  --site-subtitle-color: rgb(255 255 255 / 80%);
-  --sidebar-muted-color: rgb(255 255 255 / 78%);
+  --site-subtitle-color: rgb(255 255 255 / 78%);
+  --sidebar-muted-color: rgb(255 255 255 / 80%);
   --sidebar-active-color: #ffffff;
   --sidebar-btn-color: #ffffff;
 
   color: #ffffff;
+  isolation: isolate;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at 85% 8%, rgb(255 255 255 / 22%), transparent 42%),
+      radial-gradient(circle at 10% 95%, rgb(14 165 233 / 30%), transparent 45%);
+  }
+
+  #avatar {
+    box-shadow: 0 0 0 3px rgb(255 255 255 / 35%), 0 10px 30px rgb(0 0 0 / 20%);
+  }
+
+  .site-subtitle {
+    font-style: normal !important;
+  }
+
+  ul li.nav-item {
+    opacity: 1;
+
+    a.nav-link {
+      transition: background-color 0.15s, transform 0.15s;
+
+      &:hover {
+        transform: translateX(2px);
+      }
+    }
+
+    &.active .nav-link {
+      background: rgb(255 255 255 / 20%);
+      box-shadow: inset 0 0 0 1px rgb(255 255 255 / 22%);
+    }
+  }
+
+  .sidebar-bottom {
+    > a,
+    #mode-toggle {
+      backdrop-filter: blur(4px);
+      transition: background-color 0.15s, transform 0.15s;
+
+      &:hover {
+        transform: translateY(-1px);
+        background-color: rgb(255 255 255 / 26%);
+      }
+    }
+
+    .icon-border {
+      background-color: rgb(255 255 255 / 55%);
+    }
+  }
 }
 
-/* Post cards on the home page: rounded like the CV cards */
-#post-list .card-wrapper .card {
-  border-radius: 18px;
+/* =====================================================================
+   Top bar & search
+   ===================================================================== */
+
+#topbar-wrapper {
+  border-bottom: 1px solid transparent;
 }
 
-/* Tags as soft chips, like the CV skills */
-.post-tag {
-  background: var(--cv-accent-soft);
-  border-color: transparent;
+#search {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.15s, box-shadow 0.15s;
+
+  &:focus-within {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px var(--primary-soft);
+  }
+}
+
+#search-result-wrapper {
+  background: var(--bg);
 }
 
 /* Mobile/tablet: keep the top bar pinned while the page scrolls */
@@ -153,10 +334,10 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    background-color: var(--main-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--main-border-color);
+    background-color: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: saturate(160%) blur(12px);
+    -webkit-backdrop-filter: saturate(160%) blur(12px);
+    border-bottom-color: var(--border);
   }
 
   /* the post TOC bar sticks right below the pinned top bar */
@@ -181,9 +362,314 @@
   }
 }
 
-/* Bold headings, as in the CV */
-h1, h2, h3, h4, h5,
-.post-title {
-  font-weight: 700;
-  letter-spacing: -0.01em;
+/* =====================================================================
+   Home: post cards
+   ===================================================================== */
+
+#post-list {
+  .card-wrapper {
+    display: block;
+    border-radius: 18px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+
+      .card {
+        box-shadow: var(--shadow-lg);
+        border-color: var(--primary-soft-2);
+      }
+
+      .card-title {
+        color: var(--primary) !important;
+      }
+    }
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    box-shadow: var(--shadow-md);
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+
+    .card-title {
+      font-weight: 700;
+      transition: color 0.15s;
+    }
+  }
+}
+
+.pagination .page-item {
+  .page-link:hover {
+    background-color: var(--primary-soft);
+  }
+
+  &.active .page-link {
+    background: var(--primary);
+    color: var(--on-primary);
+  }
+}
+
+/* =====================================================================
+   Right panel ("Недавно обновлено", "Популярные теги")
+   ===================================================================== */
+
+#panel-wrapper {
+  .access > section {
+    border-left: 0;
+    padding: 1.1rem 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: var(--shadow-sm);
+
+    &:not(:first-child) {
+      margin-top: 1.25rem;
+    }
+
+    > :last-child {
+      margin-bottom: 0 !important;
+    }
+  }
+
+  .panel-heading {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--primary);
+  }
+}
+
+/* Tags everywhere: soft indigo chips */
+.post-tag {
+  background: var(--primary-soft);
+  color: var(--primary) !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  transition: background-color 0.15s, color 0.15s;
+
+  &:hover {
+    background: var(--primary) !important;
+    color: var(--on-primary) !important;
+    border-bottom: 0;
+  }
+}
+
+/* =====================================================================
+   Post page
+   ===================================================================== */
+
+.post-meta em a,
+.post-meta a {
+  color: var(--text-2);
+}
+
+/* Quotes */
+blockquote:not([class^='prompt-']) {
+  border-left: 4px solid var(--primary);
+  background: var(--primary-soft);
+  border-radius: 0 12px 12px 0;
+  padding: 0.85rem 1.1rem;
+  color: var(--text-2);
+}
+
+/* Callouts: tinted card with a colored stripe */
+blockquote[class^='prompt-'] {
+  border-radius: 12px;
+  border: 1px solid transparent;
+  border-left-width: 4px;
+}
+
+blockquote.prompt-tip { border-color: color-mix(in srgb, var(--ok) 25%, transparent); border-left-color: var(--ok); }
+blockquote.prompt-info { border-color: color-mix(in srgb, var(--info) 25%, transparent); border-left-color: var(--info); }
+blockquote.prompt-warning { border-color: color-mix(in srgb, var(--warn) 30%, transparent); border-left-color: var(--warn); }
+blockquote.prompt-danger { border-color: color-mix(in srgb, var(--danger) 25%, transparent); border-left-color: var(--danger); }
+
+/* Inline code */
+.content code.highlighter-rouge,
+code.highlighter-rouge {
+  border-radius: 6px;
+  padding: 0.15em 0.4em;
+}
+
+/* Code blocks: one tinted surface for the header and the code */
+.highlight,
+.highlight .w,
+.highlight pre {
+  background-color: var(--highlight-bg-color) !important;
+}
+
+/* Code blocks */
+div[class^='language-'],
+div.highlighter-rouge {
+  border-radius: 14px !important;
+  box-shadow: none !important;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.code-header {
+  border-bottom: 1px solid var(--border);
+}
+
+/* Tables */
+.table-wrapper {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow-sm);
+
+  > table {
+    width: 100%;
+
+    thead {
+      border-bottom: 1px solid var(--border);
+      background: var(--surface-2);
+
+      th {
+        color: var(--text);
+        font-weight: 600;
+      }
+    }
+
+    tbody tr:last-child {
+      border-bottom: 0;
+    }
+  }
+}
+
+/* Share buttons */
+.share-wrapper .share-icons a:hover,
+.share-wrapper .share-icons button:hover {
+  color: var(--primary);
+}
+
+/* Previous / next post */
+.post-navigation {
+  gap: 1rem;
+
+  .btn {
+    background: var(--surface);
+    border: 1px solid var(--border) !important;
+    border-radius: 16px !important;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+
+    &:not(.disabled):hover {
+      background: var(--surface);
+      border-color: var(--primary-soft-2) !important;
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px);
+
+      &::before {
+        color: var(--muted);
+      }
+
+      p {
+        color: var(--primary);
+      }
+    }
+
+    &.disabled {
+      background: transparent;
+      box-shadow: none;
+    }
+  }
+}
+
+/* Table of contents */
+#toc-wrapper .toc-link:hover {
+  color: var(--primary);
+}
+
+/* =====================================================================
+   Categories, tags, archives
+   ===================================================================== */
+
+.categories.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+
+  .card-header {
+    background: var(--surface);
+  }
+
+  .list-group-item {
+    background: var(--surface-2);
+    border-color: var(--border);
+  }
+
+  i {
+    color: var(--primary);
+  }
+}
+
+#tags .tag {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.15s, color 0.15s;
+
+  &:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+
+  span {
+    color: var(--primary);
+  }
+}
+
+#archives {
+  .year {
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  ul li:nth-child(odd) {
+    background: var(--surface) !important;
+    background-image: none !important;
+    border-radius: 12px;
+  }
+
+  ul li a {
+    color: var(--text);
+
+    &:hover {
+      color: var(--primary);
+    }
+  }
+}
+
+/* =====================================================================
+   Buttons, popups, footer
+   ===================================================================== */
+
+#back-to-top {
+  background: var(--brand-gradient);
+  border: 0;
+  box-shadow: var(--shadow-lg);
+  color: #ffffff;
+}
+
+#notification .toast-header,
+#notification .toast-body {
+  background: var(--surface);
+}
+
+footer {
+  color: var(--muted);
+
+  a {
+    color: var(--text-2);
+
+    &:hover {
+      color: var(--primary);
+    }
+  }
 }

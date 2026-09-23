@@ -35,3 +35,15 @@
     top: 0;
   }
 }
+
+/* Back arrow in the top bar: mobile/tablet only (desktop has breadcrumbs) */
+#back-trigger {
+  display: none;
+}
+
+@media (max-width: 991.98px) {
+  #back-trigger {
+    display: block;
+    color: var(--topbar-text-color);
+  }
+}

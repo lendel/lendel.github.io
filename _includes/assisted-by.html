@@ -1,0 +1,7 @@
+{%- if page.assisted_by -%}
+<div class="assisted-by">
+  {%- for key in page.assisted_by -%}
+    {% include assisted-badge.html key=key %}
+  {%- endfor -%}
+</div>
+{%- endif -%}

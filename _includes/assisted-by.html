@@ -1,5 +1,6 @@
 {%- if page.assisted_by -%}
 <div class="assisted-by">
+  <span class="assisted-by-label">Assisted by</span>
   {%- for key in page.assisted_by -%}
     {% include assisted-badge.html key=key %}
   {%- endfor -%}

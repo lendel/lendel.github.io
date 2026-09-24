@@ -1,7 +1,6 @@
 {%- assign assistant = site.data.assistants[include.key] -%}
 {%- if assistant -%}
-  {%- assign label = assistant.label -%}
-  {%- unless label -%}{%- assign label = assistant.name | append: ' assisted' -%}{%- endunless -%}
+  {%- assign label = assistant.label | default: assistant.name -%}
   <a
     class="assisted-badge"
     href="{{ '/assisted/' | append: include.key | append: '/' | relative_url }}"

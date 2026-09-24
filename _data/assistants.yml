@@ -4,11 +4,11 @@
 #   assisted_by: [claude]            # one
 #   assisted_by: [claude, gemini]    # several
 #
-# Each key gets a badge at the end of the post and a page at /assisted/<key>/
-# listing every post it helped with.
+# The post ends with an "Assisted by" box holding one badge per key; each
+# badge links to /assisted/<key>/, which lists every post it helped with.
 #
-#   name:  shown on the badge as "<name> assisted" (unless `label` is set)
-#   label: full badge text, overrides "<name> assisted"
+#   name:  shown on the badge
+#   label: badge text, if it should differ from `name`
 #   color: badge background
 #   text:  badge text color (default: white)
 

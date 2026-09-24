@@ -14,6 +14,6 @@ description: >-
 
 Здесь я пишу о том, что делаю и что мне интересно.
 
-- **Резюме:** [lendel.github.io/cv.html](/cv.html)
+- **Резюме:** [blog.lendel.kz/cv.html](/cv.html)
 - **GitHub:** [github.com/lendel](https://github.com/lendel)
 - **Почта:** [andrey@lendel.kz](mailto:andrey@lendel.kz)

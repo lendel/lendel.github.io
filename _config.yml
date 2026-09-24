@@ -23,7 +23,7 @@ description: >- # used by seo meta and the atom feed
 
 # Fill in the protocol & hostname for your site.
 # E.g. 'https://username.github.io', note that it does not end with a '/'.
-url: "https://lendel.github.io"
+url: "https://blog.lendel.kz"
 
 github:
   username: lendel # change to your GitHub username
@@ -44,7 +44,7 @@ social:
 # Default author of the posts: jekyll-seo-tag puts it into <meta name="author"> and the JSON-LD
 author:
   name: Андрей Лендель
-  url: https://lendel.github.io/about/
+  url: https://blog.lendel.kz/about/
 
 # Site Verification Settings
 webmaster_verifications:
@@ -61,7 +61,7 @@ webmaster_verifications:
 # Web Analytics Settings
 analytics:
   google:
-    id: # fill in your Google Analytics ID
+    id: G-MVG1FGWVM9 # Google tag (GA4); Google Ads can be linked to it in the GA/Ads UI
   goatcounter:
     id: # fill in your GoatCounter ID
   umami:
@@ -113,7 +113,7 @@ actions:
   # Display "Edit this post" action on each post page to encourage contributions.
   edit_post:
     enabled: false # set to true to display the "Edit this post" action.
-    url: "https://lendel.github.io" # repository base URL, e.g. https://github.com/cotes2020/jekyll-theme-chirpy/edit/master
+    url: "https://github.com/lendel/lendel.github.io" # repository base URL, e.g. https://github.com/cotes2020/jekyll-theme-chirpy/edit/master
     # Use dynamic or static URL for the edit link.
     # If `static_url` is false, the post's path will be appended to the `url` above as the final edit link.
     # Set to true if the URL should remain unchanged, which means each post will share the same edit link.

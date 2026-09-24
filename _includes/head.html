@@ -11,6 +11,33 @@
     {% seo title=false %}
   {%- endcapture -%}
 
+  <!-- Tabs: localized title, and they are pages rather than dated articles -->
+  {% if page.collection == 'tabs' %}
+    {% assign tab_key = page.title | downcase %}
+    {% assign tab_title = site.data.locales[include.lang].tabs[tab_key] | default: page.title %}
+    {% assign tab_date = page.date | date_to_xmlschema %}
+
+    {% capture old_meta %}<meta property="og:title" content="{{ page.title }}" />{% endcapture %}
+    {% capture new_meta %}<meta property="og:title" content="{{ tab_title }}" />{% endcapture %}
+    {% assign seo_tags = seo_tags | replace: old_meta, new_meta %}
+
+    {% capture old_meta %}<meta name="twitter:title" content="{{ page.title }}" />{% endcapture %}
+    {% capture new_meta %}<meta name="twitter:title" content="{{ tab_title }}" />{% endcapture %}
+    {% assign seo_tags = seo_tags | replace: old_meta, new_meta %}
+
+    {% capture old_meta %}"headline":"{{ page.title }}"{% endcapture %}
+    {% capture new_meta %}"headline":"{{ tab_title }}"{% endcapture %}
+    {% assign seo_tags = seo_tags | replace: old_meta, new_meta %}
+
+    {% capture old_meta %}<meta property="article:published_time" content="{{ tab_date }}" />{% endcapture %}
+    {% assign seo_tags = seo_tags | remove: old_meta %}
+    {% capture old_meta %}<meta property="article:modified_time" content="{{ tab_date }}" />{% endcapture %}
+    {% assign seo_tags = seo_tags | remove: old_meta %}
+    {% assign seo_tags = seo_tags
+      | replace: '<meta property="og:type" content="article" />', '<meta property="og:type" content="website" />'
+    %}
+  {% endif %}
+
   <!-- Setup Open Graph image -->
 
   {% if page.image %}
@@ -27,23 +54,48 @@
       {% assign seo_tags = seo_tags | replace: old_url, new_url %}
     {% endunless %}
 
-  {% elsif site.social_preview_image %}
-    {%- capture img_url -%}
-      {% include media-url.html src=site.social_preview_image absolute=true %}
-    {%- endcapture -%}
+  {% else %}
+    <!-- A post without its own `image` gets its card from tools/og-images.js, others the site card -->
+    {% assign og_src = site.social_preview_image %}
 
-    {%- capture og_image -%}
-      <meta property="og:image" content="{{ img_url }}" />
-    {%- endcapture -%}
+    {% if page.collection == 'posts' %}
+      {% capture og_path %}/assets/img/og/{{ page.slug }}.jpg{% endcapture %}
+      {% assign og_file = site.static_files | where: 'path', og_path | first %}
+      {% if og_file %}
+        {% assign og_src = og_path %}
+      {% endif %}
+    {% endif %}
 
-    {%- capture twitter_image -%}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta property="twitter:image" content="{{ img_url }}" />
-    {%- endcapture -%}
+    {% if og_src %}
+      {%- capture img_url -%}
+        {% include media-url.html src=og_src absolute=true %}
+      {%- endcapture -%}
 
-    {% assign old_meta_clip = '<meta name="twitter:card" content="summary" />' %}
-    {% assign new_meta_clip = og_image | append: twitter_image %}
-    {% assign seo_tags = seo_tags | replace: old_meta_clip, new_meta_clip %}
+      {% assign og_alt = tab_title | default: page.title | default: site.title | strip_html | escape %}
+
+      {%- capture og_image -%}
+        <meta property="og:image" content="{{ img_url }}" />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="{{ og_alt }}" />
+      {%- endcapture -%}
+
+      {%- capture twitter_image -%}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="{{ img_url }}" />
+        <meta name="twitter:image:alt" content="{{ og_alt }}" />
+      {%- endcapture -%}
+
+      {% assign old_meta_clip = '<meta name="twitter:card" content="summary" />' %}
+      {% assign new_meta_clip = og_image | append: twitter_image %}
+      {% assign seo_tags = seo_tags | replace: old_meta_clip, new_meta_clip %}
+
+      <!-- JSON-LD: the same image for search engines -->
+      {% capture ld_old %}"@type":{% endcapture %}
+      {% capture ld_new %}"image":"{{ img_url }}","@type":{% endcapture %}
+      {% assign seo_tags = seo_tags | replace_first: ld_old, ld_new %}
+    {% endif %}
   {% endif %}
 
   {{ seo_tags }}

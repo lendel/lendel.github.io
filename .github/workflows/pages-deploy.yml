@@ -39,6 +39,16 @@ jobs:
         id: pages
         uses: actions/configure-pages@v6
 
+      # Open Graph cards for posts (assets/img/og/<slug>.jpg). Optional: if it fails,
+      # the site still deploys and posts fall back to the committed default.jpg.
+      - name: Draw Open Graph images
+        continue-on-error: true
+        run: |
+          npm install --no-save --no-package-lock --no-audit --no-fund playwright-core
+          node tools/og-images.js
+        env:
+          OG_CHROME: /usr/bin/google-chrome
+
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:

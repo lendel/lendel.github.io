@@ -23,6 +23,8 @@ package-lock.json
 !.vscode/tasks.json
 
 # Misc
+assets/img/og/*
+!assets/img/og/default.jpg
 _sass/vendors
 assets/js/dist/*
 !assets/js/dist/sw.min.js

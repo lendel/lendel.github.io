@@ -673,3 +673,41 @@ footer {
     }
   }
 }
+
+/* =====================================================================
+   "<Name> assisted" badges (see _data/assistants.yml)
+   ===================================================================== */
+
+.assisted-by {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 2.5rem;
+}
+
+.assisted-badge,
+.content a.assisted-badge {
+  display: inline-block;
+  padding: 0.3rem 0.75rem;
+  border: 0;
+  border-radius: 0.5rem;
+  background: var(--badge-bg);
+  color: var(--badge-fg) !important;
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  transition: filter 0.15s, transform 0.15s;
+
+  &:hover {
+    border: 0;
+    color: var(--badge-fg) !important;
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+  }
+}
+
+#page-tag h1 .assisted-badge {
+  font-size: 1rem;
+}

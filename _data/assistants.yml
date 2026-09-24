@@ -1,0 +1,29 @@
+# AI assistants and virtual authors who help write posts.
+#
+# List them in a post's front matter by key:
+#   assisted_by: [claude]            # one
+#   assisted_by: [claude, gemini]    # several
+#
+# Each key gets a badge at the end of the post and a page at /assisted/<key>/
+# listing every post it helped with.
+#
+#   name:  shown on the badge as "<name> assisted" (unless `label` is set)
+#   label: full badge text, overrides "<name> assisted"
+#   color: badge background
+#   text:  badge text color (default: white)
+
+claude:
+  name: Claude
+  color: "#d97757"
+
+gemini:
+  name: Gemini
+  color: "#4f6fe8"
+
+chatgpt:
+  name: ChatGPT
+  color: "#10a37f"
+
+grok:
+  name: Grok
+  color: "#1f2330"

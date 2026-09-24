@@ -41,6 +41,11 @@ social:
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
 
+# Default author of the posts: jekyll-seo-tag puts it into <meta name="author"> and the JSON-LD
+author:
+  name: Андрей Лендель
+  url: https://lendel.github.io/about/
+
 # Site Verification Settings
 webmaster_verifications:
   google: # fill in your Google verification code
@@ -99,7 +104,7 @@ avatar: https://www.gravatar.com/avatar/05895af5ad9143354bf2661fd9cafb18e2757662
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
-social_preview_image: # string, local or CORS resources
+social_preview_image: /assets/img/og/default.jpg # 1200×630, drawn by tools/og-images.js
 
 # boolean type, the global switch for TOC in posts.
 toc: true
@@ -202,6 +207,8 @@ defaults:
       type: tabs # see `site.collections`
     values:
       layout: page
+      seo:
+        type: WebPage # JSON-LD type, instead of BlogPosting
       permalink: /:title/
 
 sass:

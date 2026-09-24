@@ -1,0 +1,10 @@
+<!-- Extra Open Graph article tags (jekyll-seo-tag doesn't output them) -->
+{% if page.collection == 'posts' %}
+  <meta property="article:author" content="{{ '/about/' | absolute_url }}">
+  {% if page.categories.size > 0 %}
+    <meta property="article:section" content="{{ page.categories | first | escape }}">
+  {% endif %}
+  {% for tag in page.tags %}
+    <meta property="article:tag" content="{{ tag | escape }}">
+  {% endfor %}
+{% endif %}

@@ -1,7 +1,12 @@
 ---
 # the default layout is 'page'
 icon: fas fa-info-circle
+seo:
+  type: AboutPage
 order: 4
+description: >-
+  Андрей Лендель из Павлодара: создание сайтов, программирование, Telegram-боты.
+  Резюме, GitHub и контакты.
 ---
 
 Привет! Меня зовут Андрей Лендель, я живу в Павлодаре. Увлекаюсь созданием сайтов,

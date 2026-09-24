@@ -45,7 +45,7 @@ const SITE = {
   name: 'Андрей Лендель',
   tagline: 'Личный блог',
   about: 'Сайты, программирование, Telegram-боты и заметки',
-  host: 'lendel.github.io'
+  host: 'blog.lendel.kz'
 };
 
 const MONTHS = [

@@ -10,12 +10,14 @@
 ## Превью ссылок (Open Graph)
 
 Для каждого поста рисуется карточка 1200×630 (`assets/img/og/<slug>.jpg`), она показывается
-при отправке ссылки в Telegram, WhatsApp, VK, Facebook, X. После нового поста:
+при отправке ссылки в Telegram, WhatsApp, VK, Facebook, X. Карточки рисуются автоматически
+при деплое (`tools/og-images.js`), в репозитории их хранить не нужно. Если этот шаг не
+сработает, сайт всё равно опубликуется, а посты покажутся с общей `default.jpg`.
+
+Посмотреть карточки локально (нужен Playwright с Chromium):
 
 ```bash
-node tools/og-images.js           # дорисовать недостающие карточки
-node tools/og-images.js --force   # перерисовать все
+node tools/og-images.js --force
 ```
 
-Нужен Playwright с Chromium. Пока карточки нет, пост показывается с общей `default.jpg`.
 Своя картинка задаётся в front matter через `image:`, короткий текст превью — через `description:`.

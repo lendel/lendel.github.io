@@ -7,24 +7,34 @@
 //   assets/img/og/<slug>.jpg   — one card per post in _posts/
 //
 // _includes/head.html picks up a post's card automatically by its slug and
-// falls back to the site card, so after adding a post just run:
+// falls back to the site card. The deploy workflow runs this script before
+// the Jekyll build, so post cards are not kept in git. To preview locally:
 //
 //   node tools/og-images.js           # only the missing cards
 //   node tools/og-images.js --force   # redraw every card
 //
-// Needs Playwright with Chromium (`npm i -g playwright`, or a local install).
+// Needs Playwright (`playwright` or `playwright-core`, local or global) and a
+// Chromium-based browser; OG_CHROME sets the browser's path.
 
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
 function loadPlaywright() {
-  try {
-    return require('playwright');
-  } catch {
-    const globalRoot = execSync('npm root -g').toString().trim();
-    return require(path.join(globalRoot, 'playwright'));
+  const globalRoot = execSync('npm root -g').toString().trim();
+  const candidates = ['playwright', 'playwright-core'].flatMap((name) => [name, path.join(globalRoot, name)]);
+  for (const candidate of candidates) {
+    try {
+      return require(candidate);
+    } catch {}
   }
+  throw new Error('Playwright not found: npm install --no-save playwright-core');
+}
+
+function browserPath() {
+  if (process.env.OG_CHROME) return process.env.OG_CHROME;
+  if (fs.existsSync('/opt/pw-browsers/chromium')) return '/opt/pw-browsers/chromium';
+  return undefined; // the browser bundled with Playwright
 }
 
 const root = path.resolve(__dirname, '..');
@@ -196,8 +206,7 @@ async function main() {
   fs.mkdirSync(outDir, { recursive: true });
 
   const { chromium } = loadPlaywright();
-  const executablePath = fs.existsSync('/opt/pw-browsers/chromium') ? '/opt/pw-browsers/chromium' : undefined;
-  const browser = await chromium.launch({ executablePath });
+  const browser = await chromium.launch({ executablePath: browserPath() });
   const tab = await browser.newPage({ viewport: { width: 1200, height: 630 } });
 
   for (const job of todo) {

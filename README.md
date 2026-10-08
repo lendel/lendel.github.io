@@ -4,6 +4,7 @@
 
 - **Блог:** https://blog.lendel.kz
 - **Резюме:** https://blog.lendel.kz/cv.html
+- **Прогнозы об ИИ 2021–2026 (отчёт и прогноз до 2030):** https://blog.lendel.kz/ai-prognozy/
 - **Обо мне:** https://blog.lendel.kz/about/
 - **Связаться:** [andrey@lendel.kz](mailto:andrey@lendel.kz)
 

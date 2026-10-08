@@ -15,5 +15,6 @@ description: >-
 Здесь я пишу о том, что делаю и что мне интересно.
 
 - **Резюме:** [blog.lendel.kz/cv.html](/cv.html)
+- **Отчёт:** [Прогнозы об ИИ 2021–2026: что сбылось, а что нет](/ai-prognozy/)
 - **GitHub:** [github.com/lendel](https://github.com/lendel)
 - **Почта:** [andrey@lendel.kz](mailto:andrey@lendel.kz)

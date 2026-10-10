@@ -16,5 +16,6 @@ description: >-
 
 - **Резюме:** [blog.lendel.kz/cv.html](/cv.html)
 - **Отчёт:** [Прогнозы об ИИ 2021–2026: что сбылось, а что нет](/ai-prognozy/)
+- **Обзор:** [Иностранные инвестиции в Казахстане 2022–2026](/investicii-kazahstan/)
 - **GitHub:** [github.com/lendel](https://github.com/lendel)
 - **Почта:** [andrey@lendel.kz](mailto:andrey@lendel.kz)
